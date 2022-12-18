@@ -10,10 +10,13 @@ using System.Windows.Forms;
 using System.IO;
 
 //Sql Server CE
-using System.Data.SqlServerCe;
+//using System.Data.SqlServerCe;
 
 //SQLite
-using System.Data.SQLite;
+//using System.Data.SQLite;
+
+//MySQL
+using MySql.Data.MySqlClient;
 
 namespace BaseDados
 {
@@ -58,6 +61,7 @@ namespace BaseDados
             #endregion
 
             #region SQLite
+            /*
             string baseDados = Application.StartupPath + "\\db\\DBSQLite.db";
             string strConnection = @"Data Source = " + baseDados + "; Version = 3";
 
@@ -84,7 +88,38 @@ namespace BaseDados
                 conexao.Close();//fecha a conexão com o bd
             }
 
+            */
+            #endregion
 
+            #region MySQL
+            //string conexao1 = "server=127.0.0.1;User Id=developer;password=1234567";
+            string conexao2 = "server=localhost; User Id=developer; database=curso_db; password=1234567";
+            MySqlConnection conexao = new MySqlConnection(conexao2);
+
+
+            try
+            {
+                conexao.Open();
+                labelResultado.Text = "Conectado com o MySQL\n";
+
+                MySqlCommand comando = new MySqlCommand();
+
+                comando.Connection = conexao;
+                comando.CommandText = "CREATE DATABASE IF NOT EXISTS curso_db";
+
+                comando.ExecuteNonQuery();
+                labelResultado.Text = "Comando SQL executado com sucesso!\n";
+                comando.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                labelResultado.Text = "Erro ao conectar com o MySQL\n" + ex;
+            }
+            finally
+            {
+                conexao.Close();
+            }
             #endregion
         }
     }
