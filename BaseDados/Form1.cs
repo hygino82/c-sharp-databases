@@ -319,5 +319,139 @@ namespace BaseDados
             }
             #endregion
         }
+
+        private void btnProcurar_Click(object sender, EventArgs e)
+        {
+            labelResultado.Text = "";
+            lista.Rows.Clear();
+
+            #region SQLServer CE
+            /*string baseDados = Application.StartupPath + "\\db\\DBSQLServer.sdf";
+            string strConnection = @"DataSource = " + baseDados + "; Password = '1234567'";
+
+            SqlCeConnection conexao = new SqlCeConnection(strConnection);
+
+            try
+            {
+                string query = "SELECT * FROM pessoas";
+
+
+                if (txtNome.Text != "")
+                {
+                    query = "SELECT * FROM pessoas WHERE nome LIKE '" + txtNome.Text + "'";
+                }
+
+                DataTable dados = new DataTable();
+
+                SqlCeDataAdapter adaptador = new SqlCeDataAdapter(query, strConnection);
+
+                conexao.Open();
+
+                adaptador.Fill(dados);
+
+                foreach (DataRow linha in dados.Rows)
+                {
+                    lista.Rows.Add(linha.ItemArray);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                labelResultado.Text = ex.Message;
+                lista.Rows.Clear();
+
+            }
+            finally
+            {
+                conexao.Close();
+            }*/
+            #endregion
+
+            #region SQLite
+            //string baseDados = Application.StartupPath + "\\db\\DBSQLite.db";
+            //string strConnection = @"Data Source = " + baseDados + "; Version = 3";
+
+            //SQLiteConnection conexao = new SQLiteConnection(strConnection);
+
+            //try
+            //{
+            //    string query = "SELECT * FROM pessoas";
+
+
+            //    if (txtNome.Text != "")
+            //    {
+            //        query = "SELECT * FROM pessoas WHERE nome LIKE '" + txtNome.Text + "'";
+            //    }
+
+            //    DataTable dados = new DataTable();
+
+            //    SQLiteDataAdapter adaptador = new SQLiteDataAdapter(query, strConnection);
+
+            //    conexao.Open();
+
+            //    adaptador.Fill(dados);
+
+            //    foreach (DataRow linha in dados.Rows)
+            //    {
+            //        lista.Rows.Add(linha.ItemArray);
+            //    }
+
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    labelResultado.Text = ex.Message;
+            //    lista.Rows.Clear();
+
+            //}
+            //finally
+            //{
+            //    conexao.Close();
+            //}
+            #endregion
+
+            #region MySql
+            string strConnection = "server=localhost; User Id=developer; database=curso_teste; password=1234567";
+
+            MySqlConnection conexao = new MySqlConnection(strConnection);
+
+            try
+            {
+                string query = "SELECT * FROM pessoas";
+
+
+                if (txtNome.Text != "")
+                {
+                    query = "SELECT * FROM pessoas WHERE nome LIKE '" + txtNome.Text + "'";
+                }
+
+                DataTable dados = new DataTable();
+
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(query, strConnection);
+
+                conexao.Open();
+
+                adaptador.Fill(dados);
+
+                foreach (DataRow linha in dados.Rows)
+                {
+                    lista.Rows.Add(linha.ItemArray);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                labelResultado.Text = ex.Message;
+                lista.Rows.Clear();
+
+            }
+            finally
+            {
+                conexao.Close();
+            }
+            #endregion
+        }
     }
 }
