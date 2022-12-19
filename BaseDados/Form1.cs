@@ -14,6 +14,7 @@ using System.IO;
 
 //SQLite
 //using System.Data.SQLite;
+//using System.Data.SqlClient;
 
 //MySQL
 using MySql.Data.MySqlClient;
@@ -30,7 +31,8 @@ namespace BaseDados
         private void btnConectar_Click(object sender, EventArgs e)
         {
             #region SQL Server CE
-            /*string baseDados = Application.StartupPath + "\\db\\DBSQLServer.sdf";
+            /*
+            string baseDados = Application.StartupPath + "\\db\\DBSQLServer.sdf";
             string strConnection = @"DataSource = " + baseDados + "; Password = '1234567'";
             SqlCeEngine db = new SqlCeEngine(strConnection);
 
@@ -93,7 +95,7 @@ namespace BaseDados
 
             #region MySQL
             //string conexao1 = "server=127.0.0.1;User Id=developer;password=1234567";
-            string conexao2 = "server=localhost; User Id=developer; database=curso_db; password=1234567";
+            /*string conexao2 = "server=localhost; User Id=developer; database=curso_db; password=1234567";
             MySqlConnection conexao = new MySqlConnection(conexao2);
 
 
@@ -105,7 +107,7 @@ namespace BaseDados
                 MySqlCommand comando = new MySqlCommand();
 
                 comando.Connection = conexao;
-                comando.CommandText = "CREATE DATABASE IF NOT EXISTS curso_db";
+                comando.CommandText = "CREATE DATABASE IF NOT EXISTS curso_teste";
 
                 comando.ExecuteNonQuery();
                 labelResultado.Text = "Comando SQL executado com sucesso!\n";
@@ -115,6 +117,97 @@ namespace BaseDados
             catch (Exception ex)
             {
                 labelResultado.Text = "Erro ao conectar com o MySQL\n" + ex;
+            }
+            finally
+            {
+                conexao.Close();
+            }*/
+            #endregion
+        }
+
+        private void btnCriarTabela_Click(object sender, EventArgs e)
+        {
+
+            #region SQLServer CE
+            /*
+            string baseDados = Application.StartupPath + "\\db\\DBSQLServer.sdf";
+            string strConnection = @"DataSource = " + baseDados + "; Password = '1234567'";
+
+            SqlCeConnection conexao = new SqlCeConnection(strConnection);
+
+            try
+            {
+                conexao.Open();
+
+                SqlCeCommand comando = new SqlCeCommand();
+                comando.Connection = conexao;
+
+                comando.CommandText = "CREATE TABLE pessoas(id INT NOT NULL PRIMARY KEY, nome NVARCHAR(50), email NVARCHAR(50))";
+                comando.ExecuteNonQuery();
+                labelResultado.Text = "Tabela pessoas criada SQL Server CE";
+                comando.Dispose();
+            }
+            catch (Exception ex)
+            {
+                labelResultado.Text = "Erro ao conectar o SQL Server CE\n" + ex.Message;
+
+            }
+            finally
+            {
+                conexao.Close();
+            }*/
+            #endregion
+            #region SQLite
+            /*
+            string baseDados = Application.StartupPath + "\\db\\DBSQLite.db";
+            string strConnection = @"Data Source = " + baseDados + "; Version = 3";
+
+            SQLiteConnection conexao = new SQLiteConnection(strConnection);
+
+            try
+            {
+                conexao.Open();
+
+                SQLiteCommand comando = new SQLiteCommand();
+                comando.Connection = conexao;
+
+                comando.CommandText = "CREATE TABLE pessoas(id INT NOT NULL PRIMARY KEY, nome NVARCHAR(50), email NVARCHAR(50))";
+                comando.ExecuteNonQuery();
+                labelResultado.Text = "Tabela pessoas criada SQLite";
+                comando.Dispose();
+            }
+            catch (Exception ex)
+            {
+                labelResultado.Text = "Erro ao conectar o SQLite\n" + ex.Message;
+
+            }
+            finally
+            {
+                conexao.Close();
+            }
+            */
+            #endregion
+            #region MySql  
+            string strConnection = "server=localhost; User Id=developer; database=curso_teste; password=1234567";
+
+            MySqlConnection conexao = new MySqlConnection(strConnection);
+
+            try
+            {
+                conexao.Open();
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = conexao;
+
+                comando.CommandText = "CREATE TABLE pessoas(id INT NOT NULL, nome VARCHAR(50), email VARCHAR(50), PRIMARY KEY (id))";
+                comando.ExecuteNonQuery();
+                labelResultado.Text = "Tabela pessoas criada MySql";
+                comando.Dispose();
+            }
+            catch (Exception ex)
+            {
+                labelResultado.Text = ex.Message;
+
             }
             finally
             {
