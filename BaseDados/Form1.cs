@@ -10,10 +10,10 @@ using System.Windows.Forms;
 using System.IO;
 
 //Sql Server CE
-//using System.Data.SqlServerCe;
+using System.Data.SqlServerCe;
 
 //SQLite
-//using System.Data.SQLite;
+using System.Data.SQLite;
 //using System.Data.SqlClient;
 
 //MySQL
@@ -202,6 +202,110 @@ namespace BaseDados
                 comando.CommandText = "CREATE TABLE pessoas(id INT NOT NULL, nome VARCHAR(50), email VARCHAR(50), PRIMARY KEY (id))";
                 comando.ExecuteNonQuery();
                 labelResultado.Text = "Tabela pessoas criada MySql";
+                comando.Dispose();
+            }
+            catch (Exception ex)
+            {
+                labelResultado.Text = ex.Message;
+
+            }
+            finally
+            {
+                conexao.Close();
+            }
+            #endregion
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            #region SqlServer CE
+            /*
+            string baseDados = Application.StartupPath + "\\db\\DBSQLServer.sdf";
+            string strConnection = @"DataSource = " + baseDados + "; Password = '1234567'";
+
+            SqlCeConnection conexao = new SqlCeConnection(strConnection);
+
+            try
+            {
+                conexao.Open();
+
+                SqlCeCommand comando = new SqlCeCommand();
+                comando.Connection = conexao;
+                int id = new Random(DateTime.Now.Millisecond).Next(0, 1000);
+                string nome = txtNome.Text;
+                string email = txtEmail.Text;
+
+                comando.CommandText = "INSERT INTO pessoas VALUES (" + id + ", '" + nome + "', '" + email + "')";
+                comando.ExecuteNonQuery();
+                labelResultado.Text = "Inserido dados na tabela pessoas SQL Server CE";
+                comando.Dispose();
+            }
+            catch (Exception ex)
+            {
+                labelResultado.Text = ex.Message;
+
+            }
+            finally
+            {
+                conexao.Close();
+                txtEmail.Text = "";
+                txtNome.Text = "";
+            }*/
+            #endregion
+            #region SQLite
+            /*
+            string baseDados = Application.StartupPath + "\\db\\DBSQLite.db";
+            string strConnection = @"Data Source = " + baseDados + "; Version = 3";
+
+            SQLiteConnection conexao = new SQLiteConnection(strConnection);
+
+            try
+            {
+                conexao.Open();
+
+                SQLiteCommand comando = new SQLiteCommand();
+                comando.Connection = conexao;
+                int id = new Random(DateTime.Now.Millisecond).Next(0, 1000);
+                string nome = txtNome.Text;
+                string email = txtEmail.Text;
+
+                comando.CommandText = "INSERT INTO pessoas VALUES (" + id + ", '" + nome + "', '" + email + "')";
+                comando.ExecuteNonQuery();
+                labelResultado.Text = "Inserido dados na tabela pessoas SQLite";
+                comando.Dispose();
+            }
+            catch (Exception ex)
+            {
+                labelResultado.Text = ex.Message;
+
+            }
+            finally
+            {
+                conexao.Close();
+                txtEmail.Text = "";
+                txtNome.Text = "";
+            }*/
+            #endregion
+            #region MySQL
+
+            string strConnection = "server=localhost; User Id=developer; database=curso_teste; password=1234567";
+
+            MySqlConnection conexao = new MySqlConnection(strConnection);
+
+            try
+            {
+                conexao.Open();
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = conexao;
+
+                int id = new Random(DateTime.Now.Millisecond).Next(0, 1000);
+                string nome = txtNome.Text;
+                string email = txtEmail.Text;
+
+                comando.CommandText = "INSERT INTO pessoas VALUES (" + id + ", '" + nome + "', '" + email + "')";
+                comando.ExecuteNonQuery();
+                labelResultado.Text = "Inserido dados na tabela pessoas MySql";
                 comando.Dispose();
             }
             catch (Exception ex)
