@@ -219,72 +219,72 @@ namespace BaseDados
         private void btnInserir_Click(object sender, EventArgs e)
         {
             #region SqlServer CE
-            /*
-            string baseDados = Application.StartupPath + "\\db\\DBSQLServer.sdf";
-            string strConnection = @"DataSource = " + baseDados + "; Password = '1234567'";
 
-            SqlCeConnection conexao = new SqlCeConnection(strConnection);
+            //string baseDados = Application.StartupPath + "\\db\\DBSQLServer.sdf";
+            //string strConnection = @"DataSource = " + baseDados + "; Password = '1234567'";
 
-            try
-            {
-                conexao.Open();
+            //SqlCeConnection conexao = new SqlCeConnection(strConnection);
 
-                SqlCeCommand comando = new SqlCeCommand();
-                comando.Connection = conexao;
-                int id = new Random(DateTime.Now.Millisecond).Next(0, 1000);
-                string nome = txtNome.Text;
-                string email = txtEmail.Text;
+            //try
+            //{
+            //    conexao.Open();
 
-                comando.CommandText = "INSERT INTO pessoas VALUES (" + id + ", '" + nome + "', '" + email + "')";
-                comando.ExecuteNonQuery();
-                labelResultado.Text = "Inserido dados na tabela pessoas SQL Server CE";
-                comando.Dispose();
-            }
-            catch (Exception ex)
-            {
-                labelResultado.Text = ex.Message;
+            //    SqlCeCommand comando = new SqlCeCommand();
+            //    comando.Connection = conexao;
+            //    int id = new Random(DateTime.Now.Millisecond).Next(0, 1000);
+            //    string nome = txtNome.Text;
+            //    string email = txtEmail.Text;
 
-            }
-            finally
-            {
-                conexao.Close();
-                txtEmail.Text = "";
-                txtNome.Text = "";
-            }*/
+            //    comando.CommandText = "INSERT INTO pessoas VALUES (" + id + ", '" + nome + "', '" + email + "')";
+            //    comando.ExecuteNonQuery();
+            //    labelResultado.Text = "Inserido dados na tabela pessoas SQL Server CE";
+            //    comando.Dispose();
+            //}
+            //catch (Exception ex)
+            //{
+            //    labelResultado.Text = ex.Message;
+
+            //}
+            //finally
+            //{
+            //    conexao.Close();
+            //    txtEmail.Text = "";
+            //    txtNome.Text = "";
+            //}
             #endregion
             #region SQLite
-            /*
-            string baseDados = Application.StartupPath + "\\db\\DBSQLite.db";
-            string strConnection = @"Data Source = " + baseDados + "; Version = 3";
 
-            SQLiteConnection conexao = new SQLiteConnection(strConnection);
+            //string baseDados = Application.StartupPath + "\\db\\DBSQLite.db";
+            //string strConnection = @"Data Source = " + baseDados + "; Version = 3";
 
-            try
-            {
-                conexao.Open();
+            //SQLiteConnection conexao = new SQLiteConnection(strConnection);
 
-                SQLiteCommand comando = new SQLiteCommand();
-                comando.Connection = conexao;
-                int id = new Random(DateTime.Now.Millisecond).Next(0, 1000);
-                string nome = txtNome.Text;
-                string email = txtEmail.Text;
+            //try
+            //{
+            //    conexao.Open();
 
-                comando.CommandText = "INSERT INTO pessoas VALUES (" + id + ", '" + nome + "', '" + email + "')";
-                comando.ExecuteNonQuery();
-                labelResultado.Text = "Inserido dados na tabela pessoas SQLite";
-                comando.Dispose();
-            }
-            catch (Exception ex)
-            {
-                labelResultado.Text = ex.Message;
+            //    SQLiteCommand comando = new SQLiteCommand();
+            //    comando.Connection = conexao;
+            //    int id = new Random(DateTime.Now.Millisecond).Next(0, 1000);
+            //    string nome = txtNome.Text;
+            //    string email = txtEmail.Text;
 
-            }
-            finally
-            {
-                conexao.Close();
-                txtEmail.Text = "";
-                txtNome.Text = "";
-            }*/
+            //    comando.CommandText = "INSERT INTO pessoas VALUES (" + id + ", '" + nome + "', '" + email + "')";
+            //    comando.ExecuteNonQuery();
+            //    labelResultado.Text = "Inserido dados na tabela pessoas SQLite";
+            //    comando.Dispose();
+            //}
+            //catch (Exception ex)
+            //{
+            //    labelResultado.Text = ex.Message;
+
+            //}
+            //finally
+            //{
+            //    conexao.Close();
+            //    txtEmail.Text = "";
+            //    txtNome.Text = "";
+            //}
             #endregion
             #region MySQL
 
@@ -326,46 +326,46 @@ namespace BaseDados
             lista.Rows.Clear();
 
             #region SQLServer CE
-            /*string baseDados = Application.StartupPath + "\\db\\DBSQLServer.sdf";
-            string strConnection = @"DataSource = " + baseDados + "; Password = '1234567'";
+            //string baseDados = Application.StartupPath + "\\db\\DBSQLServer.sdf";
+            //string strConnection = @"DataSource = " + baseDados + "; Password = '1234567'";
 
-            SqlCeConnection conexao = new SqlCeConnection(strConnection);
+            //SqlCeConnection conexao = new SqlCeConnection(strConnection);
 
-            try
-            {
-                string query = "SELECT * FROM pessoas";
-
-
-                if (txtNome.Text != "")
-                {
-                    query = "SELECT * FROM pessoas WHERE nome LIKE '" + txtNome.Text + "'";
-                }
-
-                DataTable dados = new DataTable();
-
-                SqlCeDataAdapter adaptador = new SqlCeDataAdapter(query, strConnection);
-
-                conexao.Open();
-
-                adaptador.Fill(dados);
-
-                foreach (DataRow linha in dados.Rows)
-                {
-                    lista.Rows.Add(linha.ItemArray);
-                }
+            //try
+            //{
+            //    string query = "SELECT * FROM pessoas";
 
 
-            }
-            catch (Exception ex)
-            {
-                labelResultado.Text = ex.Message;
-                lista.Rows.Clear();
+            //    if (txtNome.Text != "")
+            //    {
+            //        query = "SELECT * FROM pessoas WHERE nome LIKE '" + txtNome.Text + "'";
+            //    }
 
-            }
-            finally
-            {
-                conexao.Close();
-            }*/
+            //    DataTable dados = new DataTable();
+
+            //    SqlCeDataAdapter adaptador = new SqlCeDataAdapter(query, strConnection);
+
+            //    conexao.Open();
+
+            //    adaptador.Fill(dados);
+
+            //    foreach (DataRow linha in dados.Rows)
+            //    {
+            //        lista.Rows.Add(linha.ItemArray);
+            //    }
+
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    labelResultado.Text = ex.Message;
+            //    lista.Rows.Clear();
+
+            //}
+            //finally
+            //{
+            //    conexao.Close();
+            //}
             #endregion
 
             #region SQLite
@@ -445,6 +445,109 @@ namespace BaseDados
             {
                 labelResultado.Text = ex.Message;
                 lista.Rows.Clear();
+
+            }
+            finally
+            {
+                conexao.Close();
+            }
+            #endregion
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            #region SqlServer CE
+
+            //string baseDados = Application.StartupPath + "\\db\\DBSQLServer.sdf";
+            //string strConnection = @"DataSource = " + baseDados + "; Password = '1234567'";
+
+            //SqlCeConnection conexao = new SqlCeConnection(strConnection);
+
+            //try
+            //{
+            //    conexao.Open();
+
+            //    SqlCeCommand comando = new SqlCeCommand();
+            //    comando.Connection = conexao;
+
+            //    int id = (int)lista.SelectedRows[0].Cells[0].Value;
+
+            //    comando.CommandText = "DELETE FROM pessoas WHERE id = '" + id + "'";
+            //    comando.ExecuteNonQuery();
+
+            //    labelResultado.Text = "Deletado o registro na tabela pessoas SQL Server CE";
+            //    comando.Dispose();
+            //}
+            //catch (Exception ex)
+            //{
+            //    labelResultado.Text = ex.Message;
+
+            //}
+            //finally
+            //{
+            //    conexao.Close();
+            //    txtEmail.Text = "";
+            //    txtNome.Text = "";
+            //}
+            #endregion
+            #region SQLite
+
+            //string baseDados = Application.StartupPath + "\\db\\DBSQLite.db";
+            //string strConnection = @"Data Source = " + baseDados + "; Version = 3";
+
+            //SQLiteConnection conexao = new SQLiteConnection(strConnection);
+
+            //try
+            //{
+            //    conexao.Open();
+
+            //    SQLiteCommand comando = new SQLiteCommand();
+            //    comando.Connection = conexao;
+
+            //    int id = (int)lista.SelectedRows[0].Cells[0].Value;
+
+            //    comando.CommandText = "DELETE FROM pessoas WHERE id = '" + id + "'";
+
+            //    comando.ExecuteNonQuery();
+            //    labelResultado.Text = "Removendo dados na tabela pessoas SQLite";
+            //    comando.Dispose();
+            //}
+            //catch (Exception ex)
+            //{
+            //    labelResultado.Text = ex.Message;
+
+            //}
+            //finally
+            //{
+            //    conexao.Close();
+            //    txtEmail.Text = "";
+            //    txtNome.Text = "";
+            //}
+            #endregion
+            #region MySQL
+
+            string strConnection = "server=localhost; User Id=developer; database=curso_teste; password=1234567";
+
+            MySqlConnection conexao = new MySqlConnection(strConnection);
+
+            try
+            {
+                conexao.Open();
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = conexao;
+
+                int id = (int)lista.SelectedRows[0].Cells[0].Value;
+
+                comando.CommandText = "DELETE FROM pessoas WHERE id = '" + id + "'";
+
+                comando.ExecuteNonQuery();
+                labelResultado.Text = "Removendo dados na tabela pessoas MySql";
+                comando.Dispose();
+            }
+            catch (Exception ex)
+            {
+                labelResultado.Text = ex.Message;
 
             }
             finally
